@@ -7,7 +7,11 @@ find(sub { return unless -f; return if /\.(bak|orig|rej|swp)$/;
 WriteMakefile(
   NAME => 'Samizdat::Plugin::BIS', VERSION => '0.01', ABSTRACT => 'Based-in-Sweden hosting compliance data',
   AUTHOR => 'Hans Svensson <hans\@alipang.se>', LICENSE => 'artistic_2', MIN_PERL_VERSION => '5.036',
-  PM => \%pm, PREREQ_PM => { 'Mojolicious' => '9.0' }, TEST_REQUIRES => { 'Test::More' => 0 },
+  PM => \%pm, PREREQ_PM        => {
+    'Mojolicious' => '9.0',
+    'Net::DNS::Resolver' => 0,
+    'Text::CSV' => 0,
+  }, TEST_REQUIRES => { 'Test::More' => 0 },
   META_MERGE => { 'meta-spec' => { version => 2 },
     prereqs => { runtime => { requires => { 'Samizdat' => 0 } } },
     no_index => { directory => ['lib/Samizdat/resources'] } },
